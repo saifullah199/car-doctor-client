@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import auth from "../../Firebase/firebase.config";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import axios from "axios";
 
 
 const SignIn = () => {
@@ -28,7 +29,7 @@ const SignIn = () => {
               timer: 1500
             });
           }
-          navigate('/');
+          // navigate(location?.state? location?.state : '/');
           
         })
         .catch(error =>{
@@ -51,6 +52,13 @@ const SignIn = () => {
         signIn(email,password)
         .then(result => {
           console.log(result.user)
+
+          // const loggedUser = {email}
+          // axios.post('https://car-doctor-server-gamma-brown.vercel.app/jwt', loggedUser)
+          // .then(res =>{
+          //  console.log(res)
+            
+          // })
           if(result.user){
             Swal.fire({
               position: "top-end",
@@ -61,7 +69,8 @@ const SignIn = () => {
             });
           }
           e.target.reset();
-          navigate('/');
+          // navigate(location?.state? location?.state : '/');
+
     
           
         })

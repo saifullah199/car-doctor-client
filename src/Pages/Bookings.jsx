@@ -3,17 +3,24 @@ import { AuthContext } from "../Provider/AuthProvider";
 import BookingRow from "./BookingRow";
 import Swal from "sweetalert2";
 import { update } from "firebase/database";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const Bookings = () => {
     const {user} = useContext(AuthContext)
     const [bookings, setBookings] = useState([])
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+
+    // const axiosSecure = useAxiosSecure()
+    // const url = `/bookings?email=${user?.email}`
+    const url = `https://car-doctor-server-gamma-brown.vercel.app/bookings?email=${user?.email}`
+    
     useEffect(() =>{
-        fetch(url)
+        fetch(url,{credentials:'include'})
         .then(res => res.json())
         .then(data => setBookings(data))
-    },[])
+        // axiosSecure.get(url)
+        // .then(res => setBookings(res))
+    },[url])
 
     const handleDelete =id => {
         console.log(id)
@@ -29,7 +36,7 @@ const Bookings = () => {
             if (result.isConfirmed) {
               
             
-            fetch(`http://localhost:5000/bookings/${id}`, {
+            fetch(`https://car-doctor-server-gamma-brown.vercel.app/bookings/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -51,7 +58,7 @@ const Bookings = () => {
     }
 
     const handleConfirm = id => {
-        fetch(`http://localhost:5000/bookings/${id}`,{
+        fetch(`https://car-doctor-server-gamma-brown.vercel.app/bookings/${id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
