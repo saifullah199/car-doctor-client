@@ -24,7 +24,7 @@ const CheckOut = () => {
         price: price
 
       }
-      console.log(booking);
+      // console.log(booking);
 
       fetch('https://car-doctor-server-gamma-brown.vercel.app/bookings',{
         method: 'POST',
@@ -35,7 +35,7 @@ const CheckOut = () => {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
       })
 
     }

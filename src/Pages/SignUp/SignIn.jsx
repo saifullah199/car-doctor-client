@@ -19,7 +19,7 @@ const SignIn = () => {
         signInWithPopup(auth, googleProvider)
         .then(result => {
           const loggedInUser = result.user;
-          console.log(loggedInUser)
+          // console.log(loggedInUser)
           if(loggedInUser){
             Swal.fire({
               position: "top-end",
@@ -42,16 +42,16 @@ const SignIn = () => {
 
     const handleLogin = e => {
         e.preventDefault()
-        console.log(e.currentTarget)
+        // console.log(e.currentTarget)
         const form = new FormData(e.currentTarget)
         const email = form.get('email')
         const password = form.get('password')
-        console.log(email, password)
+        // console.log(email, password)
     
     
         signIn(email,password)
         .then(result => {
-          console.log(result.user)
+          // console.log(result.user)
 
           // const loggedUser = {email}
           // axios.post('https://car-doctor-server-gamma-brown.vercel.app/jwt', loggedUser)

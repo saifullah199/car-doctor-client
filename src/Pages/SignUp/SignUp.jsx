@@ -14,14 +14,14 @@ const SignUp = () => {
   
   const handleRegister = e =>{
     e.preventDefault();
-    console.log(e.currentTarget)
+    // console.log(e.currentTarget)
     const form = new FormData(e.currentTarget)
     const name = form.get('name')
     const photo = form.get('photo')
     const email = form.get('email')
     const password = form.get('password')
 
-    console.log(name,photo, email,password)
+    // console.log(name,photo, email,password)
     if (password.length < 6){
       setRegisterError('Password should be at least 6 characters or longer');
       return;
@@ -43,7 +43,7 @@ const SignUp = () => {
 
     createUser(email,password)
     .then(result =>{
-      console.log(result.user)
+      // console.log(result.user)
       if(result.user){
         Swal.fire({
           position: "top-end",

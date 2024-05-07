@@ -35,7 +35,7 @@ const AuthProvider = ({children}) => {
         const userEmail = currentUser?.email || user?.email;
         const loggedUser = {email: userEmail}
             setUser(currentUser)
-            console.log('user in the auth state changed', currentUser)
+            // console.log('user in the auth state changed', currentUser)
             
             setLoading(false)
             // if user exists then issue a token
@@ -45,7 +45,7 @@ const AuthProvider = ({children}) => {
                     withCredentials: true
                 })
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                 })
             }
             else{
@@ -53,7 +53,7 @@ const AuthProvider = ({children}) => {
                     withCredentials: true
                 })
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                 })
             }
         })
